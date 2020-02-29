@@ -44,23 +44,6 @@ def prep_mnist():
     (xtrain, ytrain), (xtest, ytest) = import_mnist()
     xtrain = xtrain.reshape(60000, 784)
     xtest = xtest.reshape(10000, 784)
-    opts = np.arange(0, 10).tolist()
-    (ytrain, noise) = add_noise(ytrain, opts, 10)
-
     (xtrain, ytrain) = only4_9(xtrain, ytrain)
     (xtest, ytest) = only4_9(xtest, ytest)
-    print("Finished prepping data")
-    print(
-        "Number of training and testing samples: "
-        + str(len(xtrain))
-        + " "
-        + str(len(xtest))
-    )
-    # print(str(noise * 100) + "% noise added")
-
     return (xtrain, ytrain), (xtest, ytest)
-
-
-if __name__ == "__main__":
-    prep_mnist()
-
